@@ -235,7 +235,7 @@ export default class Item extends Component {
               dragTime = this.props.moveResizeValidator('move', this.props.item, dragTime)
             }
 
-            this.props.onDrop(this.itemId, dragTime, this.props.order + this.dragGroupDelta(e))
+            this.props.onDrop(this.itemId, dragTime, this.props.order + this.dragGroupDelta(e),this.props.item)
           }
 
           this.setState({
