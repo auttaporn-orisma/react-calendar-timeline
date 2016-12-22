@@ -1030,18 +1030,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  };
 	
-	  this.dropItem = function (itemId, dragTime, newGroupOrder, item) {
+	  this.dropItem = function (itemId, dragTime, newGroupOrder, itemF) {
 	    _this3.setState({ draggingItem: null, dragTime: null, dragGroupTitle: null });
 	    var keys = _this3.props.keys;
-	    console.log(item);
-	    var difftime = item[keys.itemTimeEndKey] - item[keys.itemTimeStartKey];
-	    item[keys.itemTimeStartKey] = dragTime;
-	    item[keys.itemTimeEndKey] = item[keys.itemTimeStartKey] + difftime;
+	
+	    var difftime = itemF[keys.itemTimeEndKey] - itemF[keys.itemTimeStartKey];
+	    itemF[keys.itemTimeStartKey] = dragTime;
+	    itemF[keys.itemTimeEndKey] = itemF[keys.itemTimeStartKey] + difftime;
 	    var newGroup = _this3.props.groups[newGroupOrder];
-	    item[keys.itemGroupKey] = newGroup[keys.groupIdKey];
+	    itemF[keys.itemGroupKey] = newGroup[keys.groupIdKey];
 	
 	    if (_this3.props.onItemMove) {
-	      _this3.props.onItemMove(item, dragTime, newGroupOrder);
+	      console.log('itemF');
+	      console.log(itemF);
+	      _this3.props.onItemMove(itemId, itemF, dragTime, newGroupOrder);
 	    }
 	  };
 	

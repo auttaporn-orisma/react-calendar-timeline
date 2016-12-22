@@ -566,20 +566,22 @@ export default class ReactCalendarTimeline extends Component {
       newGroupOrder: newGroupOrder,
       dragGroupTitle: newGroup ? _get(newGroup, keys.groupTitleKey) : ''
     })
-  }
+  } 
 
-  dropItem = (itemId, dragTime, newGroupOrder, item) => {
+  dropItem = (itemId, dragTime, newGroupOrder, itemF) => {
     this.setState({draggingItem: null, dragTime: null, dragGroupTitle: null})
     const keys = this.props.keys
-    console.log(item)
-    var difftime = item[keys.itemTimeEndKey] - item[keys.itemTimeStartKey]
-    item[keys.itemTimeStartKey] = dragTime
-    item[keys.itemTimeEndKey] = item[keys.itemTimeStartKey] + difftime
+    
+    var difftime = itemF[keys.itemTimeEndKey] - itemF[keys.itemTimeStartKey]
+    itemF[keys.itemTimeStartKey] = dragTime
+    itemF[keys.itemTimeEndKey] = itemF[keys.itemTimeStartKey] + difftime
     let newGroup = this.props.groups[newGroupOrder]
-    item[keys.itemGroupKey] = newGroup[keys.groupIdKey]
+    itemF[keys.itemGroupKey] = newGroup[keys.groupIdKey]
 
     if (this.props.onItemMove) {
-      this.props.onItemMove(item, dragTime, newGroupOrder)
+      console.log('itemF')
+      console.log(itemF)
+      this.props.onItemMove(itemId,itemF, dragTime, newGroupOrder)
     }
   }
 
