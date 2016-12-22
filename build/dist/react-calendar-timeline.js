@@ -1030,8 +1030,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  };
 	
-	  this.dropItem = function (item, dragTime, newGroupOrder) {
+	  this.dropItem = function (itemId, dragTime, newGroupOrder, item) {
 	    _this3.setState({ draggingItem: null, dragTime: null, dragGroupTitle: null });
+	    var keys = _this3.props.keys;
+	    console.log(item);
+	    var difftime = item[keys.itemTimeEndKey] - item[keys.itemTimeStartKey];
+	    item[keys.itemTimeStartKey] = dragTime;
+	    item[keys.itemTimeEndKey] = item[keys.itemTimeStartKey] + difftime;
+	    var newGroup = _this3.props.groups[newGroupOrder];
+	    item[keys.itemGroupKey] = newGroup[keys.groupIdKey];
+	
 	    if (_this3.props.onItemMove) {
 	      _this3.props.onItemMove(item, dragTime, newGroupOrder);
 	    }
@@ -1198,12 +1206,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	// import ItemGroup from './ItemGroup'
 	
 	var canResizeLeft = function canResizeLeft(item, canResize) {
-	  var value = (0, _utils._get)(item, 'canResize') !== undefined ? (0, _utils._get)(item, 'canResize') : undefined.props.canResize;
+	  var value = (0, _utils._get)(item, 'canResize') !== undefined ? (0, _utils._get)(item, 'canResize') : canResize;
 	  return value === 'left' || value === 'both';
 	};
 	
 	var canResizeRight = function canResizeRight(item, canResize) {
-	  var value = (0, _utils._get)(item, 'canResize') !== undefined ? (0, _utils._get)(item, 'canResize') : undefined.props.canResize;
+	  var value = (0, _utils._get)(item, 'canResize') !== undefined ? (0, _utils._get)(item, 'canResize') : canResize;
 	  return value === 'right' || value === 'both' || value === true;
 	};
 	
@@ -1640,7 +1648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              dragTime = _this2.props.moveResizeValidator('move', _this2.props.item, dragTime);
 	            }
 	
-	            _this2.props.onDrop(_this2.itemId, dragTime, _this2.props.order + _this2.dragGroupDelta(e));
+	            _this2.props.onDrop(_this2.itemId, dragTime, _this2.props.order + _this2.dragGroupDelta(e), _this2.props.item);
 	          }
 	
 	          _this2.setState({
