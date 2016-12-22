@@ -238,13 +238,13 @@ export default class Item extends Component {
             this.props.onDrop(this.itemId, dragTime, this.props.order + this.dragGroupDelta(e),this.props.item)
           }
 
-          this.setState({
-            dragging: false,
-            dragStart: null,
-            preDragPosition: null,
-            dragTime: null,
-            dragGroupDelta: null
-          })
+          // this.setState({
+          //   dragging: false,
+          //   dragStart: null,
+          //   preDragPosition: null,
+          //   dragTime: null,
+          //   dragGroupDelta: null
+          // })
         }
       })
       .on('resizestart', (e) => {
@@ -297,12 +297,12 @@ export default class Item extends Component {
           if (this.props.onResized && this.resizeTimeDelta(e, resizeEdge) !== 0) {
             this.props.onResized(this.itemId, resizeTime, resizeEdge)
           }
-          this.setState({
-            resizing: null,
-            resizeStart: null,
-            resizeEdge: null,
-            resizeTime: null
-          })
+          // this.setState({
+          //   resizing: null,
+          //   resizeStart: null,
+          //   resizeEdge: null,
+          //   resizeTime: null
+          // })
         }
       })
       .on('tap', (e) => {

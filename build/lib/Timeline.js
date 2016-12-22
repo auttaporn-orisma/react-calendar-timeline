@@ -967,8 +967,6 @@ var _initialiseProps = function _initialiseProps() {
     itemF[keys.itemGroupKey] = newGroup[keys.groupIdKey];
 
     if (_this3.props.onItemMove) {
-      console.log('itemF');
-      console.log(itemF);
       _this3.props.onItemMove(itemId, itemF, dragTime, newGroupOrder);
     }
   };

@@ -579,8 +579,6 @@ export default class ReactCalendarTimeline extends Component {
     itemF[keys.itemGroupKey] = newGroup[keys.groupIdKey]
 
     if (this.props.onItemMove) {
-      console.log('itemF')
-      console.log(itemF)
       this.props.onItemMove(itemId,itemF, dragTime, newGroupOrder)
     }
   }
