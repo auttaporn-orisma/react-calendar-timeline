@@ -595,10 +595,10 @@ export default class ReactCalendarTimeline extends Component {
     })
   }
 
-  resizedItem = (item, resizeTime, edge) => {
+  resizedItem = (item, resizeTime, edge, itemF, itemInx) => {
     this.setState({resizingItem: null, resizingEdge: null, resizeTime: null})
     if (this.props.onItemResize) {
-      this.props.onItemResize(item, resizeTime, edge)
+      this.props.onItemResize(item, resizeTime, edge, itemF, itemInx)
     }
   }
 

@@ -61,7 +61,7 @@ export default class Item extends Component {
     }
   }
 
-  
+
 
   shouldComponentUpdate (nextProps, nextState) {
     var shouldUpdate = nextState.dragging !== this.state.dragging ||
@@ -299,7 +299,7 @@ export default class Item extends Component {
           }
 
           if (this.props.onResized && this.resizeTimeDelta(e, resizeEdge) !== 0) {
-            this.props.onResized(this.itemId, resizeTime, resizeEdge,this.props.item,this.props.item_inx)
+            this.props.onResized(this.itemId, resizeTime, resizeEdge, this.props.item,this.props.item_inx)
           }
           this.setState({
             resizing: null,

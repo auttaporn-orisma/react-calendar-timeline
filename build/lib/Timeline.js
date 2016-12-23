@@ -979,10 +979,10 @@ var _initialiseProps = function _initialiseProps() {
     });
   };
 
-  this.resizedItem = function (item, resizeTime, edge) {
+  this.resizedItem = function (item, resizeTime, edge, itemF, itemInx) {
     _this3.setState({ resizingItem: null, resizingEdge: null, resizeTime: null });
     if (_this3.props.onItemResize) {
-      _this3.props.onItemResize(item, resizeTime, edge);
+      _this3.props.onItemResize(item, resizeTime, edge, itemF, itemInx);
     }
   };
 
