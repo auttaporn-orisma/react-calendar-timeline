@@ -945,6 +945,9 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.dragItem = function (item, dragTime, newGroupOrder, itemF, itemInx) {
+    var newGroup = _this3.props.groups[newGroupOrder];
+    var keys = _this3.props.keys;
+
     _this3.setState({
       draggingItem: item,
       dragTime: dragTime,

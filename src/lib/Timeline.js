@@ -64,6 +64,7 @@ export default class ReactCalendarTimeline extends Component {
 
     itemTouchSendsClick: PropTypes.bool,
 
+    
     onItemMove: PropTypes.func,
     onItemResize: PropTypes.func,
     onItemClick: PropTypes.func,
@@ -121,6 +122,7 @@ export default class ReactCalendarTimeline extends Component {
 
     traditionalZoom: false,
 
+    
     onItemMove: null,
     onItemResize: null,
     onItemClick: null,
@@ -556,7 +558,12 @@ export default class ReactCalendarTimeline extends Component {
     }
   }
 
-  dragItem = (item, dragTime, newGroupOrder, itemF, itemInx) => { 
+  dragItem = (item, dragTime, newGroupOrder, itemF, itemInx) => {
+    let newGroup = this.props.groups[newGroupOrder]
+    const keys = this.props.keys
+    
+
+
     this.setState({
       draggingItem: item,
       dragTime: dragTime,

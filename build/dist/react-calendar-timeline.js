@@ -1019,6 +1019,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	
 	  this.dragItem = function (item, dragTime, newGroupOrder, itemF, itemInx) {
+	    var newGroup = _this3.props.groups[newGroupOrder];
+	    var keys = _this3.props.keys;
+	
 	    _this3.setState({
 	      draggingItem: item,
 	      dragTime: dragTime,
@@ -1651,13 +1654,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _this2.props.onDrop(_this2.itemId, dragTime, _this2.props.order + _this2.dragGroupDelta(e), _this2.props.item, _this2.props.item_inx);
 	          }
 	
-	          // this.setState({
-	          //   dragging: false,
-	          //   dragStart: null,
-	          //   preDragPosition: null,
-	          //   dragTime: null,
-	          //   dragGroupDelta: null
-	          // })
+	          _this2.setState({
+	            dragging: false,
+	            dragStart: null,
+	            preDragPosition: null,
+	            dragTime: null,
+	            dragGroupDelta: null
+	          });
 	        }
 	      }).on('resizestart', function (e) {
 	        if (_this2.props.selected) {
@@ -1706,14 +1709,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	
 	          if (_this2.props.onResized && _this2.resizeTimeDelta(e, resizeEdge) !== 0) {
-	            _this2.props.onResized(_this2.itemId, resizeTime, resizeEdge);
+	            _this2.props.onResized(_this2.itemId, resizeTime, resizeEdge, _this2.props.item, _this2.props.item_inx);
 	          }
-	          // this.setState({
-	          //   resizing: null,
-	          //   resizeStart: null,
-	          //   resizeEdge: null,
-	          //   resizeTime: null
-	          // })
+	          _this2.setState({
+	            resizing: null,
+	            resizeStart: null,
+	            resizeEdge: null,
+	            resizeTime: null
+	          });
 	        }
 	      }).on('tap', function (e) {
 	        _this2.actualClick(e, e.pointerType === 'mouse' ? 'click' : 'touch');
