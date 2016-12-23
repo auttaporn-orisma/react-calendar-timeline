@@ -100,8 +100,9 @@ export default class Items extends Component {
     return (
       <div className='rct-items'>
         {visibleItems.filter(item => sortedDimensionItems[_get(item, itemIdKey)])
-                     .map(item => <Item key={_get(item, itemIdKey)}
+                     .map((item,inx) => <Item key={_get(item, itemIdKey)}
                                         item={item}
+                                        item_inx={inx}
                                         keys={this.props.keys}
                                         order={groupOrders[_get(item, itemGroupKey)]}
                                         dimensions={sortedDimensionItems[_get(item, itemIdKey)].dimensions}

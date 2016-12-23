@@ -64,6 +64,7 @@ export default class ReactCalendarTimeline extends Component {
 
     itemTouchSendsClick: PropTypes.bool,
 
+    onItemDrag: PropTypes.func,
     onItemMove: PropTypes.func,
     onItemResize: PropTypes.func,
     onItemClick: PropTypes.func,
@@ -121,6 +122,7 @@ export default class ReactCalendarTimeline extends Component {
 
     traditionalZoom: false,
 
+    onItemDrag: null,
     onItemMove: null,
     onItemResize: null,
     onItemClick: null,
@@ -556,10 +558,14 @@ export default class ReactCalendarTimeline extends Component {
     }
   }
 
-  dragItem = (item, dragTime, newGroupOrder) => {
+  dragItem = (item, dragTime, newGroupOrder, itemF, itemInx) => {
     let newGroup = this.props.groups[newGroupOrder]
     const keys = this.props.keys
-
+    
+    if (_this3.props.onItemDrag) { 
+      _this3.props.onItemDrag(item, dragTime, newGroupOrder,itemF, itemInx);
+    }
+    
     this.setState({
       draggingItem: item,
       dragTime: dragTime,
@@ -568,7 +574,7 @@ export default class ReactCalendarTimeline extends Component {
     })
   } 
 
-  dropItem = (itemId, dragTime, newGroupOrder, itemF) => {
+  dropItem = (itemId, dragTime, newGroupOrder, itemF, itemInx) => {
     this.setState({draggingItem: null, dragTime: null, dragGroupTitle: null})
     const keys = this.props.keys
     
@@ -579,7 +585,7 @@ export default class ReactCalendarTimeline extends Component {
     itemF[keys.itemGroupKey] = newGroup[keys.groupIdKey]
 
     if (this.props.onItemMove) {
-      this.props.onItemMove(itemId,itemF, dragTime, newGroupOrder)
+      this.props.onItemMove(itemId, dragTime, newGroupOrder, itemF, itemInx)
     }
   }
 

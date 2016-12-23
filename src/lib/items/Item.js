@@ -55,9 +55,13 @@ export default class Item extends Component {
       resizing: null,
       resizeEdge: null,
       resizeStart: null,
-      resizeTime: null
+      resizeTime: null,
+
+      dimensions:null
     }
   }
+
+  
 
   shouldComponentUpdate (nextProps, nextState) {
     var shouldUpdate = nextState.dragging !== this.state.dragging ||
@@ -217,7 +221,7 @@ export default class Item extends Component {
           }
 
           if (this.props.onDrag) {
-            this.props.onDrag(this.itemId, dragTime, this.props.order + dragGroupDelta)
+            this.props.onDrag(this.itemId, dragTime, this.props.order + dragGroupDelta,this.props.item,this.props.item_inx)
           }
 
           this.setState({
@@ -235,7 +239,7 @@ export default class Item extends Component {
               dragTime = this.props.moveResizeValidator('move', this.props.item, dragTime)
             }
 
-            this.props.onDrop(this.itemId, dragTime, this.props.order + this.dragGroupDelta(e),this.props.item)
+            this.props.onDrop(this.itemId, dragTime, this.props.order + this.dragGroupDelta(e),this.props.item,this.props.item_inx)
           }
 
           // this.setState({

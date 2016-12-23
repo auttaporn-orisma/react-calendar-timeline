@@ -99,7 +99,9 @@ var Item = function (_Component) {
       resizing: null,
       resizeEdge: null,
       resizeStart: null,
-      resizeTime: null
+      resizeTime: null,
+
+      dimensions: null
     };
     return _this;
   }
@@ -276,7 +278,7 @@ var Item = function (_Component) {
           }
 
           if (_this2.props.onDrag) {
-            _this2.props.onDrag(_this2.itemId, dragTime, _this2.props.order + dragGroupDelta);
+            _this2.props.onDrag(_this2.itemId, dragTime, _this2.props.order + dragGroupDelta, _this2.props.item, _this2.props.item_inx);
           }
 
           _this2.setState({
@@ -293,7 +295,7 @@ var Item = function (_Component) {
               dragTime = _this2.props.moveResizeValidator('move', _this2.props.item, dragTime);
             }
 
-            _this2.props.onDrop(_this2.itemId, dragTime, _this2.props.order + _this2.dragGroupDelta(e), _this2.props.item);
+            _this2.props.onDrop(_this2.itemId, dragTime, _this2.props.order + _this2.dragGroupDelta(e), _this2.props.item, _this2.props.item_inx);
           }
 
           // this.setState({

@@ -98,9 +98,10 @@ var Items = function (_Component) {
         { className: 'rct-items' },
         visibleItems.filter(function (item) {
           return sortedDimensionItems[(0, _utils._get)(item, itemIdKey)];
-        }).map(function (item) {
+        }).map(function (item, inx) {
           return _react2.default.createElement(_Item2.default, { key: (0, _utils._get)(item, itemIdKey),
             item: item,
+            item_inx: inx,
             keys: _this2.props.keys,
             order: groupOrders[(0, _utils._get)(item, itemGroupKey)],
             dimensions: sortedDimensionItems[(0, _utils._get)(item, itemIdKey)].dimensions,
