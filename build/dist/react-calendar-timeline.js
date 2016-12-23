@@ -1055,6 +1055,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  this.resizedItem = function (item, resizeTime, edge, itemF, itemInx) {
 	    _this3.setState({ resizingItem: null, resizingEdge: null, resizeTime: null });
+	
+	    var keys = _this3.props.keys;
+	    itemF[keys.itemTimeEndKey] = resizeTime;
+	
 	    if (_this3.props.onItemResize) {
 	      _this3.props.onItemResize(item, resizeTime, edge, itemF, itemInx);
 	    }
